@@ -30,7 +30,7 @@ namespace APIs.Controllers
 
         }
         [HttpGet]
-        public IEnumerable<Models.Pessoas> RecuperaPessoas()
+        public IEnumerable<Pessoas> RecuperaPessoas()
         {
             return pessoas;
         }
