@@ -12,9 +12,7 @@ namespace APIs.Controllers
     public class Pessoascontroller : ControllerBase
     {
 
-        private static List<Pessoas> pessoas = new List<Pessoas>();
-
-        private static int id = 1;
+       
 
 
 
@@ -22,8 +20,7 @@ namespace APIs.Controllers
         public IActionResult AdicionarPessoas([FromBody] Pessoas pessoa)
         {
 
-            pessoa.Id = id++;
-            pessoas.Add(pessoa);
+           
 
             return CreatedAtAction(nameof(RecuperaPessoasId), new { Id = pessoa.Id }, pessoa);
 
