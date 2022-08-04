@@ -12,13 +12,25 @@ namespace APIs.Controllers
     public class Pessoascontroller : ControllerBase
     {
 
-    public static List<Pessoas> pessoas = new List<Pessoas>();
+        private static List<Pessoas> pessoas = new List<Pessoas>();
 
+        private static int id = 1;  
+        
+
+
+        [HttpPost]
     public void AdicionarPessoas([FromBody]Pessoas pessoa)
     {
+        
+        pessoa.Id = id++; 
         pessoas.Add(pessoa);
-        Console.WriteLine(pessoa.Nome);
+      
 
     }
+        [HttpGet]
+        public IEnumerable<Pessoas> RecuperaPessoas()
+        {
+            return pessoas;
+        }
     }
 }

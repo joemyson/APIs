@@ -8,9 +8,10 @@ namespace APIs.Models
 {
     public class Pessoas
     {
+        public int Id { get; set; }
         [Required(ErrorMessage ="Campo obrigatorio")]
         public string Nome { get; set; }
-        [Range(1,10,ErrorMessage ="o numero deve conter enter 1 e 10 digitos")]
+     
         public int Telefone { get; set; }
         [Required(ErrorMessage ="Campo obrigatorio")]
         public string Apelido { get; set; }
