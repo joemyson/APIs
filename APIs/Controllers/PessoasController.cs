@@ -19,24 +19,31 @@ namespace APIs.Controllers
 
 
         [HttpPost]
-        public void AdicionarPessoas([FromBody] Pessoas pessoa)
+        public IActionResult AdicionarPessoas([FromBody] Pessoas pessoa)
         {
 
             pessoa.Id = id++;
             pessoas.Add(pessoa);
 
+            return CreatedAtAction(nameof(RecuperaPessoasId), new { Id = pessoa.Id }, pessoa);
+
 
         }
         [HttpGet]
-        public IEnumerable<Pessoas> RecuperaPessoas()
+        public IEnumerable<Models.Pessoas> RecuperaPessoas()
         {
             return pessoas;
         }
 
         [HttpGet("{id}")]
-        public Pessoas RecuperaPessoasId(int id)
+        public IActionResult RecuperaPessoasId(int id)
         {
-            return pessoas.FirstOrDefault(pessoas => pessoas.Id == id);
+            Pessoas pessoa = pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
+            if(pessoa != null)
+            {
+                return Ok(pessoa);
+            }
+            return NotFound();
         }
     }
 }
