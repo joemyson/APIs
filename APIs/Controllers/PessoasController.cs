@@ -14,23 +14,29 @@ namespace APIs.Controllers
 
         private static List<Pessoas> pessoas = new List<Pessoas>();
 
-        private static int id = 1;  
-        
+        private static int id = 1;
+
 
 
         [HttpPost]
-    public void AdicionarPessoas([FromBody]Pessoas pessoa)
-    {
-        
-        pessoa.Id = id++; 
-        pessoas.Add(pessoa);
-      
+        public void AdicionarPessoas([FromBody] Pessoas pessoa)
+        {
 
-    }
+            pessoa.Id = id++;
+            pessoas.Add(pessoa);
+
+
+        }
         [HttpGet]
         public IEnumerable<Pessoas> RecuperaPessoas()
         {
             return pessoas;
+        }
+
+        [HttpGet("{id}")]
+        public Pessoas RecuperaPessoasId(int id)
+        {
+            return pessoas.FirstOrDefault(pessoas => pessoas.Id == id);
         }
     }
 }
