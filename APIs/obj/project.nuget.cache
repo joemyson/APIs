@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "HNwqpcM4Xmb3Y//KFyNjiySrQXNXKbLLiJnuAetrCw3NQUD9ls4kapHf1rHtY/mH6/JU0lZPsg6jiwQp5v+RbA==",
+  "success": true,
+  "projectFilePath": "C:\\ApiNet\\APIs\\APIs\\APIs.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\joemy\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}
