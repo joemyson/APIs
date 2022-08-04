@@ -1,4 +1,5 @@
-﻿using APIs.Models;
+﻿using APIs.Data;
+using APIs.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,35 +13,84 @@ namespace APIs.Controllers
     public class Pessoascontroller : ControllerBase
     {
 
-       
 
 
+        private PessoaContext _context;
+
+        public Pessoascontroller(PessoaContext context)
+        {
+            _context = context;
+             
+
+        }
 
         [HttpPost]
         public IActionResult AdicionarPessoas([FromBody] Pessoas pessoa)
         {
 
-           
 
+
+            _context.pessoas.Add(pessoa);
+            _context.SaveChanges();
+            
             return CreatedAtAction(nameof(RecuperaPessoasId), new { Id = pessoa.Id }, pessoa);
 
 
         }
         [HttpGet]
-        public IEnumerable<Pessoas> RecuperaPessoas()
+        public IActionResult RecuperaPessoas()
         {
-            return pessoas;
+            return Ok(_context.pessoas);
         }
 
         [HttpGet("{id}")]
         public IActionResult RecuperaPessoasId(int id)
         {
-            Pessoas pessoa = pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
+            Pessoas pessoa = _context.pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
             if(pessoa != null)
             {
                 return Ok(pessoa);
             }
             return NotFound();
         }
+
+
+        [HttpPut]
+        public IActionResult AtualizarPessoa(int id, [FromBody] Pessoas NovaPessoa)
+        {
+            Pessoas pessoa = _context.pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
+
+            if(pessoa == null)
+            {
+                return NotFound();
+            }
+            pessoa.Id = NovaPessoa.Id;
+            pessoa.Nome = NovaPessoa.Nome;
+            pessoa.Telefone = NovaPessoa.Telefone;
+            pessoa.Apelido = NovaPessoa.Apelido;
+            _context.SaveChanges();
+
+            return NoContent();
+        }
+
+
+        [HttpDelete]
+        public IActionResult DeletarPessoa(int id, [FromBody] Pessoas NovaPessoa)
+        {
+            Pessoas pessoa = _context.pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
+
+            if (pessoa == null)
+            {
+                return NotFound();
+            }
+
+            _context.SaveChanges();
+            _context.SaveChanges();
+            return NoContent();
+        }
+
+
+
+
     }
 }
