@@ -1,4 +1,5 @@
 ﻿using APIs.Data;
+using APIs.Data.DTO;
 using APIs.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,10 +26,16 @@ namespace APIs.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionarPessoas([FromBody] Pessoas pessoa)
+        public IActionResult AdicionarPessoas([FromBody] PessoaDTO pessoaDTO)
         {
 
+            Pessoas pessoa = new Pessoas
+            {
+              Apelido = pessoaDTO.Apelido,
+              Nome = pessoaDTO.Nome,
+              Telefone = pessoaDTO.Telefone
 
+            };
 
             _context.pessoas.Add(pessoa);
             _context.SaveChanges();
