@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using APIs.Data.DTO;
+using APIs.Models;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,9 @@ namespace APIs.Profiles
     {
         public PessoaProfile()
         {
-                
+            CreateMap<PessoaDTO, Pessoas>();
+            CreateMap<Pessoas, ReadPessoaDTO>();
+            CreateMap<UpDatePessoaDTO, Pessoas>();
         }
     }
 }

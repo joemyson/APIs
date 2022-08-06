@@ -1,11 +1,9 @@
 ﻿using APIs.Data;
 using APIs.Data.DTO;
 using APIs.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace APIs.Controllers
 {
@@ -17,10 +15,12 @@ namespace APIs.Controllers
 
 
         private PessoaContext _context;
+        private IMapper _mapper;
 
-        public Pessoascontroller(PessoaContext context)
+        public Pessoascontroller(PessoaContext context, IMapper mapper )
         {
             _context = context;
+            _mapper = mapper;
              
 
         }
@@ -29,13 +29,7 @@ namespace APIs.Controllers
         public IActionResult AdicionarPessoas([FromBody] PessoaDTO pessoaDTO)
         {
 
-            Pessoas pessoa = new Pessoas
-            {
-              Apelido = pessoaDTO.Apelido,
-              Nome = pessoaDTO.Nome,
-              Telefone = pessoaDTO.Telefone
-
-            };
+            Pessoas pessoa = _mapper.Map<Pessoas>(pessoaDTO);
 
             _context.pessoas.Add(pessoa);
             _context.SaveChanges();
@@ -56,15 +50,7 @@ namespace APIs.Controllers
             Pessoas pessoa = _context.pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
             if(pessoa != null)
             {
-                ReadPessoaDTO PessoaDto = new ReadPessoaDTO
-                {
-                    Apelido = pessoa.Apelido,
-                    Nome = pessoa.Nome,
-                    Telefone = pessoa.Telefone,
-                    HoraDaConsulta = DateTime.Now,
-                    Id= pessoa.Id
-
-                };
+                ReadPessoaDTO PessoaDto = _mapper.Map<ReadPessoaDTO>(pessoa);
                 return Ok(pessoa);
             }
             return NotFound();
@@ -80,10 +66,8 @@ namespace APIs.Controllers
             {
                 return NotFound();
             }
-          
-            pessoa.Nome = PessoaDTO.Nome;
-            pessoa.Telefone = PessoaDTO.Telefone;
-            pessoa.Apelido = PessoaDTO.Apelido;
+
+            _mapper.Map(PessoaDTO, pessoa);
             _context.SaveChanges();
 
             return NoContent();
@@ -101,7 +85,7 @@ namespace APIs.Controllers
             }
 
             _context.SaveChanges();
-            _context.SaveChanges();
+           
             return NoContent();
         }
 

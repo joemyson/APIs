@@ -7,7 +7,6 @@ C:\ApiNet\APIs\APIs\bin\Debug\net5.0\APIs.runtimeconfig.dev.json
 C:\ApiNet\APIs\APIs\bin\Debug\net5.0\APIs.dll
 C:\ApiNet\APIs\APIs\bin\Debug\net5.0\ref\APIs.dll
 C:\ApiNet\APIs\APIs\bin\Debug\net5.0\APIs.pdb
-C:\ApiNet\APIs\APIs\obj\Debug\net5.0\APIs.csproj.AssemblyReference.cache
 C:\ApiNet\APIs\APIs\obj\Debug\net5.0\APIs.GeneratedMSBuildEditorConfig.editorconfig
 C:\ApiNet\APIs\APIs\obj\Debug\net5.0\APIs.AssemblyInfoInputs.cache
 C:\ApiNet\APIs\APIs\obj\Debug\net5.0\APIs.AssemblyInfo.cs
@@ -40,3 +39,10 @@ C:\ApiNet\APIs\APIs\obj\Debug\net5.0\APIs.csproj.CopyComplete
 C:\ApiNet\APIs\APIs\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\ApiNet\APIs\APIs\bin\Debug\net5.0\ZstdNet.dll
 C:\ApiNet\APIs\APIs\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\ApiNet\APIs\APIs\bin\Debug\net5.0\AutoMapper.dll
+C:\ApiNet\APIs\APIs\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\ApiNet\APIs\APIs\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\ApiNet\APIs\APIs\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\ApiNet\APIs\APIs\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\ApiNet\APIs\APIs\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\ApiNet\APIs\APIs\obj\Debug\net5.0\APIs.csproj.AssemblyReference.cache
