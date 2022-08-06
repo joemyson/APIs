@@ -56,6 +56,15 @@ namespace APIs.Controllers
             Pessoas pessoa = _context.pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
             if(pessoa != null)
             {
+                ReadPessoaDTO PessoaDto = new ReadPessoaDTO
+                {
+                    Apelido = pessoa.Apelido,
+                    Nome = pessoa.Nome,
+                    Telefone = pessoa.Telefone,
+                    HoraDaConsulta = DateTime.Now,
+                    Id= pessoa.Id
+
+                };
                 return Ok(pessoa);
             }
             return NotFound();
@@ -63,7 +72,7 @@ namespace APIs.Controllers
 
 
         [HttpPut]
-        public IActionResult AtualizarPessoa(int id, [FromBody] Pessoas NovaPessoa)
+        public IActionResult AtualizarPessoa(int id, [FromBody] UpDatePessoaDTO PessoaDTO)
         {
             Pessoas pessoa = _context.pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
 
@@ -71,10 +80,10 @@ namespace APIs.Controllers
             {
                 return NotFound();
             }
-            pessoa.Id = NovaPessoa.Id;
-            pessoa.Nome = NovaPessoa.Nome;
-            pessoa.Telefone = NovaPessoa.Telefone;
-            pessoa.Apelido = NovaPessoa.Apelido;
+          
+            pessoa.Nome = PessoaDTO.Nome;
+            pessoa.Telefone = PessoaDTO.Telefone;
+            pessoa.Apelido = PessoaDTO.Apelido;
             _context.SaveChanges();
 
             return NoContent();

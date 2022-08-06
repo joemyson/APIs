@@ -8,9 +8,7 @@ namespace APIs.Data.DTO
 {
     public class UpDatePessoaDTO
     {
-        [Key]
-        [Required]
-        public int Id { get; set; }
+        
         [Required(ErrorMessage = "Campo obrigatorio")]
         public string Nome { get; set; }
         public int Telefone { get; set; }
