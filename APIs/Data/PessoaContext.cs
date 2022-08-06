@@ -11,5 +11,7 @@ namespace APIs.Data
         }
 
         public DbSet<Pessoas> pessoas { get; set; }
+        public DbSet<Livro> livros { get; set; }
+
     }
 }

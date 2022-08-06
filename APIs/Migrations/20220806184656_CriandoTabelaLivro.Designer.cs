@@ -2,14 +2,16 @@
 using APIs.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APIs.Migrations
 {
     [DbContext(typeof(PessoaContext))]
-    partial class PessoaContextModelSnapshot : ModelSnapshot
+    [Migration("20220806184656_CriandoTabelaLivro")]
+    partial class CriandoTabelaLivro
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

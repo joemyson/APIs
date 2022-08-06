@@ -12,12 +12,12 @@ namespace APIs.Controllers
     public class LivroController : ControllerBase
     {
 
-        private LivroContext _context;
+        private PessoaContext _context;
         private IMapper _mapper;
 
 
          
-        public LivroController( LivroContext context, IMapper mapper)
+        public LivroController( PessoaContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
